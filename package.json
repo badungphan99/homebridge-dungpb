@@ -1,23 +1,24 @@
 {
-  "name": "homebridge-dungpb",
-  "displayName": "Homebridge Dungpb",
+  "name": "homebridge-tasmota-heater-cooler",
+  "displayName": "Homebridge Tasmota Heater Cooler",
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "A custom Homebridge plugin to integrate my devices with Apple HomeKit.",
+  "description": "A Homebridge plugin that exposes Tasmota‑flashed heater/cooler devices to Apple HomeKit.",
   "author": "dungpb",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/badungphan99/homebridge-dungpb#readme",
+  "homepage": "https://github.com/badungphan99/homebridge-tasmota-heater-cooler#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/badungphan99/homebridge-dungpb.git"
+    "url": "https://github.com/badungphan99/homebridge-tasmota-heater-cooler.git"
   },
   "bugs": {
-    "url": "https://github.com/badungphan99/homebridge-dungpb/issues"
+    "url": "https://github.com/badungphan99/homebridge-tasmota-heater-cooler/issues"
   },
   "keywords": [
     "homebridge-plugin",
-    "dungpb"
+    "homebridge-tasmota-heater-cooler",
+    "heater-cooler"
   ],
   "main": "dist/index.js",
   "engines": {
@@ -31,7 +32,8 @@
     "watch": "npm run build && npm link && nodemon"
   },
   "dependencies": {
-    "homebridge-lib": "^7.1.4"
+    "homebridge-lib": "^7.1.4",
+    "mqtt": "^5.11.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

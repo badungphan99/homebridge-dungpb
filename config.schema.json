@@ -1,5 +1,5 @@
 {
-  "pluginAlias": "HomebridgeDungpb",
+  "pluginAlias": "HomebridgeTasmotaHeaterCooler",
   "pluginType": "platform",
   "singular": true,
   "strictValidation": false,
@@ -10,7 +10,132 @@
         "title": "Name",
         "type": "string",
         "required": true,
-        "default": "HomebridgeDungpb"
+        "default": "Homebridge Tasmota Heater Cooler"
+      },
+      "mqtt": {
+        "title": "MQTT Configuration",
+        "expandable": true,
+        "expanded": false,
+        "type": "object",
+        "properties": {
+          "host": {
+            "title": "MQTT Host",
+            "type": "string",
+            "default": "mqtt://localhost"
+          },
+          "port": {
+            "title": "MQTT Port",
+            "type": "number",
+            "default": 1883
+          },
+          "username": {
+            "title": "MQTT Username",
+            "type": "string"
+          },
+          "password": {
+            "title": "MQTT Password",
+            "type": "string"
+          }
+        },
+        "required": ["host", "port"]
+      },
+      "devices": {
+        "title": "Devices",
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Device Name",
+              "type": "string",
+              "default": "Heater Cooler"
+            },
+            "HVACprotocol": {
+              "title": "HVAC Protocol",
+              "type": "string",
+              "description": "Specifies the HVAC protocol used by your device. Refer to the list of supported protocols at https://github.com/crankyoldgit/IRremoteESP8266/blob/master/SupportedProtocols.md to ensure compatibility.",
+              "default": "COOLIX"
+            },
+            "heaterCoolerMode": {
+              "title": "Heater Cooler Mode",
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "title": "Mode",
+                "type": "string",
+                "enum": [
+                  "AUTO",
+                  "HEAT",
+                  "COOL"
+                ]
+              }
+            },
+            "heaterCoolerModeValue": {
+              "title": "Heater Cooler Mode Value",
+              "type": "string",
+              "description": "The value of the heater cooler mode from your ir remote",
+              "default": "Heat, Cool"
+            },
+            "fanSpeed": {
+              "title": "Fan Speed",
+              "type": "string",
+              "description": "The fan speed setting for the device",
+              "default": "Auto, Min, Medium, Max"
+            },
+            "vSwingMode": {
+              "title": "Vertical Swing Mode",
+              "type": "string",
+              "description": "The vertical swing mode setting for the device",
+              "oneOf": [
+                {
+                  "title": "State",
+                  "enum": ["state"]
+                },
+                {
+                  "title": "StateLess",
+                  "enum": ["stateLess"]
+                }
+              ],
+              "default": "state"
+            },
+            "vSwingModeValue": {
+              "title": "Vertical Swing Mode Value",
+              "type": "string",
+              "description": "The value of the vertical swing mode from your ir remote",
+              "default": "On, Off"
+            },
+            "tempratureTopic": {
+              "title": "Temperature Topic",
+              "type": "string",
+              "description": "The MQTT topic for temperature updates",
+              "placeholder": "home/temperature"
+            },
+            "temperatureUnit": {
+              "title": "Temperature Unit",
+              "type": "string",
+              "description": "The unit of temperature used by the device",
+              "enum": [
+                "C",
+                "F"
+              ],
+              "default": "C"
+            },
+            "manufacturer": {
+              "title": "Manufacturer",
+              "type": "string"
+            },
+            "model": {
+              "title": "Model",
+              "type": "string"
+            },
+            "serialNumber": {
+              "title": "Serial Number",
+              "type": "string"
+            }
+          },
+          "required": ["name", "HVACprotocol", "vSwingMode", "serialNumber"]
+        }
       }
     }
   }

@@ -1,9 +1,9 @@
 /**
  * This is the name of the platform that users will use to register the plugin in the Homebridge config.json
  */
-export const PLATFORM_NAME = 'HomebridgeDungpb';
+export const PLATFORM_NAME = 'HomebridgeTasmotaHeaterCooler';
 
 /**
  * This must match the name of your plugin as defined the package.json `name` property
  */
-export const PLUGIN_NAME = 'homebridge-dungpb';
+export const PLUGIN_NAME = 'homebridge-tasmota-heater-cooler';
